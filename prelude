@@ -1,0 +1,62 @@
+real procedure abs (e); value e; real e; c_procedure;
+integer procedure iabs (e); value e; integer e; c_procedure;
+integer	procedure sign (x); value x; real x; c_procedure;
+integer procedure entier (e); value e; real e; c_procedure;
+real procedure sqrt (e); value e; real e; c_procedure;
+real proc sin (a); value a; real a; c_procedure;
+real proc cos (a); value a; real a; c_procedure;
+real procedure arctan (e); value e; real e; c_procedure;
+real procedure ln (e); value e; real e; c_procedure;
+real procedure exp (e); value e; real e; c_procedure;
+real procedure epsilon; c_procedure;
+real procedure random; c_procedure;
+
+procedure stop; c_procedure;
+procedure fault (str, r); value r; string str; real r; c_procedure;
+integer procedure length (str); string str; c_procedure;
+
+integer procedure open_file (str, kind); value kind; string str; integer kind; c_procedure;
+
+integer procedure close_file (channel); value channel; integer channel; c_procedure;
+
+procedure space (channel); value channel; integer channel; c_procedure;
+
+procedure newline (channel); value channel; integer channel;c_procedure;
+
+procedure outstring (channel, str);
+value channel; integer channel; string str; c_procedure;
+
+procedure outterminator (channel); value channel; integer channel; c_procedure;
+
+procedure inchar (channel, str, v);
+value channel; integer channel, v; string str; c_procedure;
+
+integer procedure outchar (channel, str, v);
+value channel, v; integer channel, v; string str; c_procedure;
+
+real procedure read_real (channel);
+value channel; integer channel; c_procedure;
+
+procedure outinteger (channel, v);
+value channel, v; integer channel, v; c_procedure;
+
+procedure outreal    (channel, v); value channel, v; integer channel; real v; c_procedure;
+
+procedure ininteger (channel, v); value channel; integer channel, v; c_procedure;
+procedure inreal (channel, v); value channel; integer channel; real v; c_procedure;
+
+real procedure maxreal; c_procedure;
+real procedure minreal; c_procedure;
+
+comment some non standard procedures;
+integer procedure i_lwb (a, i); value i; integer array a; integer i;c_procedure;
+integer procedure b_lwb (a, i); value i; boolean array a; integer i; c_procedure;
+integer procedure r_lwb (a, i); value i; real array a; integer i; c_procedure;
+integer procedure i_upb (a, i); value i; integer array a; integer i; c_procedure;
+integer procedure b_upb (a, i); value i; boolean array a; integer i; c_procedure;
+integer procedure r_upb (a, i); value i; real array a; integer i; c_procedure;
+
+integer procedure raw_in (channel); value channel; integer channel; c_procedure;
+procedure raw_out (channel, val); value channel, val; integer channel, val; c_procedure;
+
+

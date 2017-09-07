@@ -1,0 +1,68 @@
+typedef integer:  A_int:   int;
+typedef boolean:  A_bool:  char;
+typedef real:     A_real:  double;
+typedef void:     void:    void;
+end;
+
+
+binary [ + 7  ((integer integer integer constant "(%L) + (%R)")
+                 (integer real real constant "((double)(%L)) +  (%R)")
+                 (real real real constant "(%L) + (%R)")
+                 (real integer real constant "(%L) + ((double)(%R))"))]
+         [ * 8 ((integer integer integer constant "(%L) * (%R)")
+                 (integer real real constant "((double)(%L)) * (%R)")
+                 (real integer real constant "(%L) * ((double)(%R))")
+                 (real real real constant "(%L) * (%R)")) ]
+         [ ^ 9 ((integer integer integer "(__ipow(%L,%R))")
+                 (real integer real " __npow (%L, %R)")
+                 (integer real real "__fpow ((double)%L, %R)")
+                 (real real real "__fpow (%L, %R)")) ]
+         [ / 8 ((integer integer integer constant "(%L) / (%R)")
+                 (integer real real constant "((double)(%L))/(%R)")
+                 (real integer real constant "(%L) /((double)(%R))")
+                 (real real real constant "(%L)/(%R)")) ]
+         [ - 7 ((integer integer integer constant "(%L) - (%R)")
+                 (integer real real constant "((double)%L)-(%R)")
+                 (real real real constant "(%L) - (%R)")
+                 (real integer real constant "%L - (double)%R " ) ) ]
+         [ <=  6 ((integer integer boolean "(%L) <= (%R)")
+                 (real real boolean "(%L) <= (%R)")
+                 (integer real boolean "((double)(%L))<= (%R)")
+                 (real integer boolean "(%L) <= ((double)(%R))"))]
+         [ >=  6 ((integer integer boolean "(%L) >= (%R)")
+                 (real real boolean "(%L) >= (%R)")
+                 (integer real boolean "((double)(%L)) >= (%R)")
+                 (real integer boolean "(%L) >= ((double)(%R))"))]
+         [ > 6  ((integer integer boolean "(%L) > (%R) ")
+        	 (real real boolean "(%L) > (%R)")
+        	 (integer real boolean "((double)(%L)) > (%R)")
+        	 (real integer boolean "(%L) > ((double)(%R))"))]
+         [ < 6  ((integer integer boolean "(%L) < (%R) ")
+        	 (real real boolean "(%L) < (%R)")
+        	 (integer real boolean "((double)(%L)) < (%R)")
+        	 (real integer boolean "(%L) < ((double)(%R))"))]
+         [ = 6  ((integer integer boolean "(%L) == (%R)")
+                 (real real boolean "(%L) == (%R)")
+                 (boolean boolean boolean "(%L) == (%R)")
+                 (integer real boolean "((double)(%L)) == (%R)")
+                 (real integer boolean "(%L) == ((double)(%R))" ))]
+         [ ^= 6 ((integer integer boolean "(%L) != (%R)")
+                 (real real boolean "(%L) != (%R) ")
+                 (boolean boolean boolean "(%L) != (%R)")
+                 (integer real boolean "((double)(%L)) != (%R)")
+                 (real integer boolean "(%L) != ((double)(%R))" ))]
+         [ div 4 ((integer integer integer constant  "(%L) /(%R)"))]
+         [ equiv 1 ((boolean boolean boolean "(%L) == (%R)")) ]
+         [ implies 2 ((boolean boolean boolean "(((%L) & (%R)) || (!(%L) & !(%R)))")) ]
+         [ and 4 ((boolean boolean boolean "(%L) && (%R)"))]
+         [ or 3 ((boolean boolean boolean "(%L) || (%R)"))]
+end;
+
+unary    [ + 10 ((integer integer constant "%L")
+                 (real real constant "%L")) ]
+         [ - 10 ((integer integer constant "-(%L)")
+                 (real real constant " -(%L)")) ]
+         [ not 5 ((boolean boolean constant "!(%L)"))]
+end;
+
+
