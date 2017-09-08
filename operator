@@ -51,6 +51,12 @@ binary [ + 7  ((integer integer integer constant "(%L) + (%R)")
                  (boolean boolean boolean "(%L) != (%R)")
                  (integer real boolean "((double)(%L)) != (%R)")
                  (real integer boolean "(%L) != ((double)(%R))" ))]
+	 [ notequal 6 ((integer integer boolean "(%L) != (%R)")
+                 (real real boolean "(%L) != (%R) ")
+                 (boolean boolean boolean "(%L) != (%R)")
+                 (integer real boolean "((double)(%L)) != (%R)")
+                 (real integer boolean "(%L) != ((double)(%R))" ))]
+
          [ div 4 ((integer integer integer constant  "(%L) /(%R)"))]
          [ equiv 1 ((boolean boolean boolean "(%L) == (%R)")) ]
          [ implies 2 ((boolean boolean boolean "(((%L) & (%R)) || (!(%L) & !(%R)))")) ]
@@ -60,9 +66,9 @@ end;
 
 unary    [ + 10 ((integer integer constant "%L")
                  (real real constant "%L")) ]
-         [ - 10 ((integer integer constant "-(%L)")
+         [ - 10 ((integer integer constant " -(%L)")
                  (real real constant " -(%L)")) ]
-         [ not 5 ((boolean boolean constant "!(%L)"))]
+         [ not 5 ((boolean boolean constant "! (%L)"))]
 end;
 
 
