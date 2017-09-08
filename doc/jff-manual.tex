@@ -39,9 +39,9 @@
 \newcommand{\notrans}[3]{#1 \stackrel{#2}{\not\! \longrightarrow} #3}
 
 \begin{document}
-\title{{\huge jff-a2c}\\
-{\normalsize A simple demonstration compiler for ALGOL 60\footnote{The software was written in 2002, 2003 and came up when cleaning up some old disks. It turned out that the software was still running. Apart from changing the affiliation
-in the title, and updating some of the examples, nothing changed}}\\
+\title{{\huge jff-algol}\\
+{\normalsize A simple demonstration compiler for ALGOL 60\footnote{The software was written in 2002, 2003 and was discovered when cleaning up some old disks. It turned out that the software - with a few minor modifications - was still running. Apart from changing the affiliation
+and some annotations this manual is as it was in 2003.}}
 \ \\
 User Manual of Version II
 \ \\
@@ -50,7 +50,7 @@ User Manual of Version II
 Lazy Chair Computing\\
 The Netherlands\\
 {\em J.vanKatwijk@gmail.nl}}
-%\date{}
+\date{november 2003}
 \maketitle
 \bibliographystyle{plain}
 %\baselineskip 22pt
@@ -77,8 +77,9 @@ from the various constructs in ALGOL 60 (i.e. by name parameters,
 formal procedures, value arrays, switches etc) would be helpful and
 interesting.
 
-About 25 years ago, the author wrote an ALGOL compiler for
-use on the PDP-11. Recently, the author was looking for a toy
+About 25 years ago, in the second half of the 70-ties, the author
+wrote an ALGOL compiler for use on the PDP-11.
+Recently, the author was looking for a toy
 project in his spare time, he decided to write a
 simple ALGOL to C translator, with as particular features:
 \begin{itemize}
@@ -98,7 +99,10 @@ priorities is helpful in discussing syntax and semantics.
 
 The implementation was a fun (spare time) project, therefore,
 the translator is named {\em jff-a2c}, where {\em jff} stands for
-{\em Just For Fun}.
+{\em Just For Fun}. A small program {\em jff-algol} was written to
+manage the process of translating Algol into C, compiling and linking the
+C program.
+
 The current translator fully implements the ALGOL 60
 language as described in the "Modified report on the Algorithmic Language
 ALGOL 60".
@@ -120,17 +124,18 @@ the target language is plain C.
 The translator is shown to be capable of compiling an artifically generated
 1 million line  ALGOL program, although the resulting C program could not be compiled anymore
 by the local C compiler due to space constraints.
-Compilation speed is about 1000 lines a second on a 1.3 GHz machine with sufficient memory.
+Compilation speed is about 1000 lines a second on a 1.3 GHz machine with sufficient memory\footnote{Recall that was 2003}.
 
 \section{Installing and running the translator}
 \subsection{Installing the translator}
 The translator sources are distributed as a tarball.
 Untarring will create a directory {\em jff-a2c}.
-Running configure, make and make install will install the compiler. Make install might require root permissions.
+Running configure, {\em make} and  {\em make install}
+will install the compiler. {\em make install} might require root permissions.
 \ \\
 The following files will be installed
 \begin{itemize}
-\item  {\em jff-algol}, a driver program for the translator;
+\item {\em jff-algol}, a driver program for the translator;
 \item {\em jff-a2c}, the front end, translating ALGOL sources to C sources;
 \item {\em lib\_jff.a}, the run time support functions;
 \item {\em operator}, a file containing the specifications and definitions of the ALGOL operators;
@@ -177,8 +182,10 @@ The first non blank character in the file to be translated,
 determines the mode.
 If this first character is a single quote ('),
 stropped mode is assumed, otherwise non-stropped mode.
-In stropped mode, blanks and control characters are ignored, apart from their use in
-strings and character denotations. In non-stropped mode, blanks and control characters act as delimiter.
+In stropped mode, blanks and control characters are ignored,
+apart from their use in
+strings and character denotations.
+In non-stropped mode, blanks and control characters act as delimiter.
 \paragraph{Keywords}
 The predefined keywords are given below.
 {\footnotesize
@@ -470,7 +477,8 @@ be computed during compilation of the resulting C program. It must be realized
 that this has implications especially for array bounds, treating
 arrays with constant bounds is different from arrays
 with non-constant bounds.
-\item The {\em string} models the code generated for the operator. It may contain
+\item The {\em string} models the code generated for the operator. 
+Such a model may contain
 the indicators \%L and \%R, that are used as
 place holders for the code generated for
 the left resp. the right operand.  
@@ -513,6 +521,8 @@ operand is provided for, the return value will be of type {\em integer}
 and its implementation is through a call to the C function {\em fac}. If
 a  {\em real} operand is provided for, the return value will be of type
 {\em real}, and the function {\em Rfac} is called in run time.
+
+The new functions {\em fac} and {\em Rfac} then should be included in the file "runtime.c".
 \paragraph{The standard operator file}
 
 The operator file as used in the distribution reads
@@ -579,9 +589,9 @@ end;
 
 unary    [ + 10 ((integer integer constant "%L")
                  (real real constant "%L")) ]
-         [ - 10 ((integer integer constant "-(%L)")
+         [ - 10 ((integer integer constant " -(%L)")
                  (real real constant " -(%L)")) ]
-         [ not 5 ((boolean boolean constant "!(%L)"))]
+         [ not 5 ((boolean boolean constant " !(%L)"))]
 end;
 \end{verbatim}
 }
@@ -593,11 +603,12 @@ the default operation is to
 compile and link the resulting C program to the precompiled run time support
 functions, and the appropriate C libraries.
 The installation procedure will translate the source of the
-runtime system (in the source file {\em run\_time.c} and will
+runtime system (in the source file {\em run\_time.c}) and will
 create a library {\em lib\_jff.a}.
 
 The runtime support package is NOT completely machine
-independent,  in a number of situations, the parameters are searched in a certain order.
+independent,  in a number of situations, the parameters are searched in a certain order\footnote {In the current version that is not true anymore, use is made
+of the $va\_list$ and $va\_start$ and $va\_arg$ macros}.
 In build time, a function is executed that will
 generate the appropriate definitions as used in the runtime package.
 It must be realized however that the author does not have had any
@@ -612,7 +623,7 @@ formal parameters;
 defined in the standard prelude, as far as they are not directly available
 in a C library.
 \end{itemize}
-It is not advised to modify the procedures from the first two categories category.
+It is not advised to modify the procedures from the first two categories.
 \paragraph{Dynamic array management}
 Arrays with non static bounds are dealt with in run time. At run time
 a stack (implemented through a linked list) is built, each stack element
@@ -653,7 +664,8 @@ Then, invoking {\em make} and {\em make install}
 will compile and install the modified
 translator.
 
-In case compilation and linking of the C output of the compiler is done manually,
+In case compilation and linking of the C output of the compiler
+is done manually,
 one should specify {\em -lm} in order to include the 
 appropriate C library in the linking process. This library is required for basic numerical operations.
 \subsection{Known bugs}
@@ -672,7 +684,7 @@ that this compiler output is output from an earlier version of the compiler.
 In details, the code generated by this version of the compiler, may deviate}.
 \paragraph{Example 0}
 Standard C text books start introducing the language by a program that will
-print {\em Hello world}. In ALGOL, this would look like
+print {\em Hello world}. In ALGOL 60, this might look like
 {\footnotesize
 \begin{verbatim}
 begin
@@ -772,7 +784,7 @@ int main () {
 \end{verbatim}
 }
 \paragraph{Example 2}
-In the second example, we show how non local variables are accessed.
+In the second example, we show how non-local variables are accessed.
 {\footnotesize
 \begin{verbatim}
 begin
@@ -1918,7 +1930,7 @@ compiler is to look at the famous "man or boy: example program of
 Donald Knut (see  e.g. https://en.wikipedia.org/wiki/Man\_or\_boy\_test)
 
 The code reads
-{\small
+{\footnotesize
 \begin{verbatim}
 begin
    integer i;
@@ -1950,7 +1962,7 @@ end;
 The parameters are passed {\em by name}, and thus thunks are generated
 to handle them. The translated procedure "A" therefore has quite a number
 of parameters
-{\small
+{\footnotesize
 \begin{verbatim}
 
 int _i_40;			/* i declared at line 2 */
@@ -1996,7 +2008,7 @@ _A_41 (int k, char *Lx1, int (*Ax1) (char *, int), int (*Vx1) (char *, int),
 
 The procedure "B" is - in Algol - parameterless, but is used as procedure
 parameter
-{\small
+{\footnotesize
 \begin{verbatim}
 int D_B_44 (char *link, int n, ...) {
   if (n != 0)
@@ -2050,7 +2062,7 @@ The amount of parameters, and the access to non-local variables, makes the
 call to "A" in the body of procedure "B" less readable.
 
 The thunks
-{\small
+{\footnotesize
 \begin{verbatim}
 int A_jff_0A (char *LP, int V) {
   fault (" no assignable object", 19);
@@ -2095,7 +2107,7 @@ int _jff_4A (char *LP, int d) {
 }
 
 Finally, the main program is pretty straight forward.
-{\small
+{\footnotesize
 \begin{verbatim}
 // The main program
 int main () {
