@@ -58,7 +58,7 @@ second_example:
 	          outinteger (1, i); space (1); outreal (1, a [i, i]); space (1);
 	          newline (1);
 	          print_matrix ("parameter", n, a);
-                  if abs(a[i,i]) <= eps then
+                  if fabs(a[i,i]) <= eps then
 	begin
 	   newline (1); outstring (1, "Yep, singular since ");
 	   outinteger (1, i); space (1);
@@ -90,7 +90,7 @@ second_example:
                begin for j := 1 step 1 until n do
 	       begin
                    r := a[i,j];
-                   outreal(1, if abs(a[i,j]) < epsilon then 0 else a[i,j]);
+                   outreal(1, if fabs(a[i,j]) < epsilon then 0 else a[i,j]);
 comment            outreal(1, r);
 	       end;
                   outchar(1, "\n", 1)

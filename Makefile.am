@@ -6,13 +6,8 @@ lib_jff_a_SOURCES = runtime.c jff_header.h
 pkgdata_DATA = operator prelude
 EXTRA_DIST = doc examples operator prelude jff_header.template
 include_HEADERS = jff_header.h
-noinst_PROGRAMS=gc
-gc_SOURCES=gc.c
-BUILT_SOURCES=jff_header.h
+#BUILT_SOURCES=jff_header.h
 
-jff_header.h: jff_header.template 
-	cat jff_header.template > jff_header.h
-	./gc >> jff_header.h
 
 OPERATOR	= $(datadir)/jff-a2c/operator
 PRELUDE		= $(datadir)/jff-a2c/prelude

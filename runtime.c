@@ -36,6 +36,7 @@
 #include	<stdio.h>
 #include	<stdlib.h>
 #include	<stdarg.h>
+#include	<stdint.h>
 #include	"jff_header.h"
 #
 void fault (char *, double);
@@ -309,27 +310,33 @@ int	__is_arithmetic (char c) {
 //
 char ** __get_parameter_position (char **p1, int i) {
 int k, t;
+int count	= 0;
 	while (i > 1) {
 	   __param_type (*p1, &k, &t);
 	   switch (k) {
 	      case THUNK:
 	         p1 = PPLUS (p1, 4); // thunk par has 4 fields
+	         count += 4;
 	         break;
 
 	      case SWITCH:
 	         p1 = PPLUS (p1, 3); // switch par has three fields
+	         count += 3;
 	         break;
 
 	      case FUNCTION:
 	         p1 = PPLUS (p1, 3); // function as par has three fields
+	         count += 3;
 	         break;
 
 	      case ARRAY:
 	         p1 = PPLUS (p1, 3); // array as par has three fields
+	         count += 3;
 	         break;
 
 	      case STRING:
 	         p1 = PPLUS (p1, 2); // string as par has two fields
+	         count += 2;
 	         break;
 
 	      default:

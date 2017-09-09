@@ -35,6 +35,7 @@
 //
 #include <setjmp.h>
 #include <math.h>
+#include	<stdarg.h>
 extern	char	*_element_address();
 extern	void	__dv_init();
 extern	int	*__jff_descriptor_for_value (int *, int, char *);

@@ -15,7 +15,7 @@ begin
     procedure user;
     begin
       integer n;
-      procedure inc; 
+      procedure inc;
         begin
           n := n-1
         end;

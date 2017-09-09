@@ -40,7 +40,6 @@ extern	char	*_element_address();
 extern	void	__dv_init();
 extern	int	*__jff_descriptor_for_value (int *, int, char *);
 extern	char	*__jff_allocate_array (int *, char *);
-extern  char    * __jff_element_address (char *v, int *desc, int dim, ...);
 extern	void	__typed_copy (int *, int *, char *, char *);
 extern	void	__deallocate (char *);
 extern	void	__print_depth (int, char *);
@@ -70,7 +69,7 @@ void	jff_longjmp (jmp_buf *);
 
 /* Addressing parameters */
 #define PPLUS(x, y) (char **)(((char **)x) + (int)y)
-#define is_newer(x, y) ((char *)x) > ((char *)y)
+#define is_newer(x, y) ((char *)x) < ((char *)y)
 #define IPLUS(x, y) (int *)(((int *)x) + (int)y)
 
 

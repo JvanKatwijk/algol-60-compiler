@@ -1368,7 +1368,7 @@ treenode *new_node (int id, int l, int cn) {
 treenode *t;
 int i;
 	t = (treenode *)malloc (get_sizeof (id) * sizeof (treenode *));
-	for (i = 0; i < get_sizeof (id); i ++) t [i]. f = (treenode *)0;
+	memset (t, 0, get_sizeof (id) * sizeof (treenode *));
 	t [NODEID].  f = (treenode *)id;
 	t [LINE_NO]. f = (treenode *)l;
 	t [CHAR_NO]. f = (treenode *)cn;
@@ -1378,7 +1378,7 @@ int i;
 
 void	compile (char *src_name) {
 char	v [200];
-treenode	*environ;
+treenode	*environment;
 treenode	 *st;
 //	some basic initializations
 	init_nametables ();
@@ -1387,20 +1387,20 @@ treenode	 *st;
 
 //	now start being Algol: read the environmental block
 	init_scanner (prelude); next_symbol (&s);
-	environ = new_node (BLOCK, 0, 0);
-	set_block_number (environ, create_scope (environ));
-	parse_decls (environ, &s, TRUE);
+	environment = new_node (BLOCK, 0, 0);
+	set_block_number (environment, create_scope (environment));
+	parse_decls (environment, &s, TRUE);
 
 //	now process the user provided file
 	init_scanner (infile); next_symbol (&s);
-	st = parse_stat (environ, environ, &s);
+	st = parse_stat (environment, environment, &s);
 	leave_scope ();
 	if (errors != 0) {
 	   printf ("parsing %s complete, %d errors\n", infile, errors);
 	   exit (EXIT_FAILURE);
 	}
 
-	analyse ((treenode *)0, environ);
+	analyse ((treenode *)0, environment);
 	if (sem_errors != 0) {
 	   printf ("analysis %s complete, %d errors\n", infile, sem_errors);
 	   exit (EXIT_FAILURE);
@@ -1435,7 +1435,7 @@ treenode	 *st;
 
 //	then the global declarations and the main program
 	generate_kop (f_out, infile, include_file, compile_time);
-	generate_elab_code    (globals -> first, environ);
+	generate_elab_code    (globals -> first, environment);
 	if (c_file != (char *)0)
 	   fclose (f_out);
 }
@@ -4815,7 +4815,6 @@ int	get_amount_of_values (treenode *p) {
 int	count	= 0;
 treenode *fp;
 
-	fprintf (stderr, "in get_amount\n");
 	fp = get_proc_parameters (p);
 	while (fp != 0) {
 	   if (is_switch (fp))
@@ -4825,7 +4824,7 @@ treenode *fp;
 	      count += 3;
 	   else
 	   if (has_a_proc_type (fp)) 
-	      count += 4;
+	      count += 3;
 	   else
 	   if (has_string_type (fp))
 	      count += 2;
@@ -4861,7 +4860,6 @@ int	amount_of_values;
 //	the body is simple
 	amount_of_values =  get_amount_of_values (p);
 	if (amount_of_values > 0) {
-	   fprintf (stderr, "envelope has %d entries\n", amount_of_values);
 	   add_to_output (" int i;\n  char *p1 [");
 	   add_to_output (num_to_string (amount_of_values));
 	   add_to_output ("];\n va_list vl;\n");
@@ -8044,8 +8042,9 @@ struct	X_block {
 struct X_block *new_X_block (int a, int b, int el_size) {
 struct X_block *tmp;
 	tmp = (struct X_block *)malloc (sizeof (struct X_block));
-
+	memset (tmp, 0, sizeof (struct X_block));
 	tmp -> data = (char *)malloc (SEGMENT_SIZE * el_size);
+	memset (tmp -> data, 0, SEGMENT_SIZE * el_size);
 	tmp -> next = (struct X_block *)0;
 	tmp -> lwb  = a;
 	tmp -> upb  = b;
@@ -8061,6 +8060,7 @@ struct X_array {
 struct X_array *new_X_array (int a) {
 struct X_array *tmp;
 	tmp = (struct X_array *)malloc (sizeof (struct X_array));
+	memset (tmp, 0, sizeof (struct X_array));
 	tmp -> el_size = a;
 	tmp -> first_block = (struct X_block *)0;
 	tmp -> last_block = (struct X_block *)0;

@@ -16,13 +16,14 @@ runtime.o: runtime.c /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
  /usr/include/bits/pthreadtypes.h /usr/include/alloca.h \
  /usr/include/bits/stdlib-bsearch.h /usr/include/bits/stdlib-float.h \
- jff_header.h /usr/include/setjmp.h /usr/include/bits/setjmp.h \
- /usr/include/math.h /usr/include/bits/math-vector.h \
- /usr/include/bits/libm-simd-decl-stubs.h /usr/include/bits/huge_val.h \
- /usr/include/bits/huge_valf.h /usr/include/bits/huge_vall.h \
- /usr/include/bits/inf.h /usr/include/bits/nan.h \
- /usr/include/bits/mathdef.h /usr/include/bits/mathcalls.h \
- /usr/include/bits/mathinline.h
+ /usr/lib/gcc/x86_64-redhat-linux/6.4.1/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/wchar.h jff_header.h \
+ /usr/include/setjmp.h /usr/include/bits/setjmp.h /usr/include/math.h \
+ /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
+ /usr/include/bits/huge_val.h /usr/include/bits/huge_valf.h \
+ /usr/include/bits/huge_vall.h /usr/include/bits/inf.h \
+ /usr/include/bits/nan.h /usr/include/bits/mathdef.h \
+ /usr/include/bits/mathcalls.h /usr/include/bits/mathinline.h
 
 /usr/include/stdc-predef.h:
 
@@ -93,6 +94,12 @@ runtime.o: runtime.c /usr/include/stdc-predef.h /usr/include/stdio.h \
 /usr/include/bits/stdlib-bsearch.h:
 
 /usr/include/bits/stdlib-float.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/6.4.1/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/bits/wchar.h:
 
 jff_header.h:
 
