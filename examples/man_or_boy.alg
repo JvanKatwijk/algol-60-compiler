@@ -16,9 +16,9 @@ begin
    for i := 1 step 1 until 15 do
    begin
       outinteger (1, A (i, 1, -1, -1 , 1 , 1));
-	newline (1);
-	outstring (1, "Recursie diepte "); outinteger (1, count);
-	count := 0;
+      newline (1);
+      outstring (1, "Recursie diepte "); outinteger (1, count);
+      count := 0;
       newline (1);
    end;
 end;

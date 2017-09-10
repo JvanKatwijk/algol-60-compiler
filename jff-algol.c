@@ -88,7 +88,7 @@ char	*tail;
 }
 
 void	process_file () {
-char	v [512];
+char	v [1024];
 time_t	current_time;
 char	compile_time [255];
 int	error_code;
@@ -112,7 +112,7 @@ int	error_code;
 
 	if (trace)
 	   fprintf (stderr, "Compiling with command %s\n", v);
-
+	fflush (stderr);
 	error_code = system (v);
 	if (error_code != 0 ) {
 	   fprintf (stderr,
