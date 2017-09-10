@@ -8,7 +8,7 @@ translator. The rationale was to show the semantics of (some of
 the) Algol 60 constructs in terms of C expressions. 
 The resulting compiler compiled Algol 60, using C as intermediate language
 and - if the compilation succeeded - generated an executable. For those interested:
-it is certainly capable of handling the "man or boy" example.
+it was certainly capable of handling the "man or boy" example.
 
 Since it was a fun project, the compiler was named "jff-algol", i.e.
 Just-For-Fun-Algol.
