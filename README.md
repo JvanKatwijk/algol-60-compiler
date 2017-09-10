@@ -4,8 +4,8 @@ jff-algol: A simple ALGOL 60 to C translator
 ==============================================================
 
 In 2002 and 2003 I wrote, as a hobby project, a simple Algol 60 to C
-translator. The rationale being expressing the semantics of (some of
-the) Algol 60 constructs into C expressions. 
+translator. The rationale was to show the semantics of (some of
+the) Algol 60 constructs in terms of C expressions. 
 The resulting compiler compiled Algol 60, using C as intermediate language
 and - if the compilation succeeds - generates an executable. For those interested:
 it had no problems with "man or boy".
@@ -102,11 +102,32 @@ file it is allowed to specify a function as "c function", e.g.
 
 =================================================================
 
-The installation process will (try to) install the executables jff-algol
-and jff-a2c in the directory "/usr/local/bin", the library lib-jff.a
+Installation
+------------------------------------------------------------------
+
+The installation procedure, using auto tools, is a little shaky but
+does run and was tested on a Linux environment and an MSYS-2/mingw64
+environment.
+
+I am using the gcc toolchain, both with Linux and MSYS-2/Mingw64 Windows.
+
+The installation procedure will compile jff-algol.c, jff-a2c.c and run-time.c.
+For compilation of run-time.c the include file jff_header.h is needed.
+
+Furthermore, under Linux the installation process will (try to) install
+the executables jff-algol and jff-a2c in the directory "/usr/local/bin",
+create a library lib-jff.a from the compiled runtime.c file and install it
 in the directory "/usr/local/lib" and the files jff\_header.h, operator
 and prelude in the directory "/usr/local/share/jff-a2c".
+Under MSYS-2/Mingw64, the installation process will (try to) install
+the executables jff-algol and jff-a2c in the directory /mingw64/bin,
+the library lib-jff.a in /mingw64/lib, and the files operator and prelude
+in /mingw64/share/jff-a2c.
 
+=========================================================================
+
+Copyright
+-------------------------------------------------------------------------
 	Copyright (C)  2016, 2017
 	Jan van Katwijk (J.vanKatwijk@gmail.com)
 	Lazy Chair Programming
