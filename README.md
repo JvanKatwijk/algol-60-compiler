@@ -3,15 +3,15 @@ jff-algol: A simple ALGOL 60 to C translator
 
 ==============================================================
 
-In 2002 and 2003 I wrote, as a hobby project, a simple Algol 60 to C
+In the period 2002, 2003 I wrote in spare time, as a hobby project, a simple Algol 60 to C
 translator. The rationale was to show the semantics of (some of
 the) Algol 60 constructs in terms of C expressions. 
 The resulting compiler compiled Algol 60, using C as intermediate language
-and - if the compilation succeeds - generates an executable. For those interested:
-it had no problems with "man or boy".
+and - if the compilation succeeded - generated an executable. For those interested:
+it is certainly capable of handling the "man or boy" example.
 
 Since it was a fun project, the compiler was named "jff-algol", i.e.
-just for fun.
+Just-For-Fun-Algol.
 
 Recently, by cleaning up some old disks, I found the sources of the compiler
 and - with a very few modifications - the software just ran.
@@ -26,10 +26,10 @@ jff-algol
 
 The program jff-algol is the driver program. The setup is that calling
 
-	jff-algol filename.alg
+	jff-algol [options] filename.alg filename-2.alg ... filename-n.alg
 
-will compile the Algol source to c code, generate a (more or less) structured
-C file and compile and link the C file, resulting in an executable with the
+will compile the Algol sources to C code, generate for each of the Algol sources a
+(more or less) structured C file and compile and link the C file, resulting in an executable with the
 same name as the source program without the extension. The documentation contains
 a manual with a fairly detailed description of the resulting C code of a dozen
 example programs.
@@ -48,18 +48,21 @@ to recode the frontend into Algol 60 itself but that (almost obviously)
 never happened.
 However, due to that (vague) intention, the implementation refrained from
 using records. 
-in the C implementation, all structures (treenodes etc)  are implemented as
-segments of homogeneous arrays.
+In the C implementation, all structures (treenodes etc)  are implemented as
+segments of homogeneous arrays (arrays of char *).
 
-The file frontend.c is translated into an executable "jff-a2c".
+The file frontend.c is translated into an executable "jff-a2c". The jff-a2c
+program can be used on its own.
 
 ======================================================================
 
 runtime.c
 ----------------------------------------------------------------------
 
-All runtime support is implemented in the file runtime.c. In the
-make and installation process this file is compiled and converted
+All runtime support is implemented in the file runtime.c. The implementation of
+the support functions, e.g. setting up an array, leaving a scope etc, the implementation
+of some of the operators, and the implementation of the  functions in the prelude are here.
+In the installation process this file is compiled and the result converted
 into a library lib-jff.a
 
 =======================================================================
@@ -85,6 +88,12 @@ a pattern for the compilation, e.g.
                  (integer real real "__fpow ((double)%L, %R)")
                  (real real real "__fpow (%L, %R)")) ]
 
+shows that the power operator is on priority level 9, and, depending on the
+type of the operands, implemented as a call to a C function in the runtime
+support system.
+
+The file is read in at the start of the compilation.
+
 ========================================================================
 
 prelude
@@ -106,8 +115,10 @@ Installation
 ------------------------------------------------------------------
 
 The installation procedure, using auto tools, is a little shaky but
-does run and was tested on a Linux environment and an MSYS-2/mingw64
-environment.
+does run and was tested both in a Linux environment and a Windows 10
+environment with MSYS-2/mingw64 installed.
+Note that for the compiler to be a real compiler, it needs a C compiler
+to translate the C output of the jff-a2c translator into an executable.
 
 I am using the gcc toolchain, both with Linux and MSYS-2/Mingw64 Windows.
 
