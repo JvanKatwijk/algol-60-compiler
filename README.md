@@ -37,6 +37,8 @@ program without the extension). The documentation contains
 a manual with a fairly detailed description of the resulting C code of a dozen
 example programs.
 
+The file jff-algol.c contains the source for this program.
+
 Command line options to specify components used, build and operating
 instructions are also described in the manual.
 
@@ -45,7 +47,7 @@ instructions are also described in the manual.
 frontend.c
 --------------------------------------------------------------------
 
-The file frontend.c is the source of the real Algol 60 to C translator.
+The file frontend.c contains the source of the real Algol 60 to C translator.
 As mentioned in the manual, the original idea was - whenever I would 
 have some more free time - to recode the frontend into Algol 60 code 
 itself but that (almost obviously) never happened.
