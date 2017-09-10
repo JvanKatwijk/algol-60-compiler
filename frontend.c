@@ -7577,6 +7577,7 @@ treenode *result_type (treenode *n) {
 //
 //	for any entity, determine a type
 treenode *type_of (treenode *n) {
+treenode *m = n;
 	while (n != (treenode *)0) {
 	   switch (get_nodeid (n)) {
 	      case VARIABLE:
@@ -7639,6 +7640,10 @@ treenode *type_of (treenode *n) {
 	         return error_type;
 	   }
 	}
+
+	if (m != NULL) 
+	   fprintf (stderr, "line %d, char %d\n",
+	               get_lineno (m), get_charno (m));
 	ASSERT (FALSE, ("Expert error 53\n"));
 }
 //

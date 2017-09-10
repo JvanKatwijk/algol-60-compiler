@@ -63,7 +63,7 @@ extern	double	read_real (int);
 extern	int	__ipow (int, int);
 extern	double	__npow (double, int);
 extern	double	__fpow (double, double);
-
+extern	int	__mod  (int, int);
 void	jff_longjmp (jmp_buf *);
 
 

@@ -749,6 +749,7 @@ int __ins (int fd) {
 int n;
 
 	n = __read_char (fd, "0123456789-+ ;\n");
+	fprintf (stderr, "gelezen char %d\n", n);
 	return n > 11 ? 13 : n;
 }
 
@@ -985,7 +986,11 @@ int k, result;
    for (k = 1; k <= b; k ++) result = result * a;
    return result;
 }
-   
+
+int	__mod (int a, int b) {
+	return a % b;
+}
+
 double	__npow (double x, int n) {
 double result;
 int i;

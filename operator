@@ -21,6 +21,7 @@ binary [ + 7  ((integer integer integer constant "(%L) + (%R)")
                  (integer real real constant "((double)(%L))/(%R)")
                  (real integer real constant "(%L) /((double)(%R))")
                  (real real real constant "(%L)/(%R)")) ]
+	 [ mod 8 ((integer integer integer "__mod (%L, %R)" ))]
          [ - 7 ((integer integer integer constant "(%L) - (%R)")
                  (integer real real constant "((double)%L)-(%R)")
                  (real real real constant "(%L) - (%R)")
@@ -57,7 +58,7 @@ binary [ + 7  ((integer integer integer constant "(%L) + (%R)")
                  (integer real boolean "((double)(%L)) != (%R)")
                  (real integer boolean "(%L) != ((double)(%R))" ))]
 
-         [ div 4 ((integer integer integer constant  "(%L) /(%R)"))]
+         [ div 8 ((integer integer integer constant  "(%L) /(%R)"))]
          [ equiv 1 ((boolean boolean boolean "(%L) == (%R)")) ]
          [ implies 2 ((boolean boolean boolean "(((%L) & (%R)) || (!(%L) & !(%R)))")) ]
          [ and 4 ((boolean boolean boolean "(%L) && (%R)"))]
