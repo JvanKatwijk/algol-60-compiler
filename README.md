@@ -33,7 +33,7 @@ The program jff-algol is the driver program. The setup is that calling
 will compile the Algol sources to C code by generating for each of the Algol 
 sources a (more or less) structured C file and include file, and compile and
 link the C file, resulting in an executable (with the same name as the source
-program without the extension. The documentation contains
+program without the extension). The documentation contains
 a manual with a fairly detailed description of the resulting C code of a dozen
 example programs.
 
