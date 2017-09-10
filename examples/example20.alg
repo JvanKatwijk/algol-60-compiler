@@ -103,7 +103,9 @@ comment            outreal(1, r);
 
          outstring (1, "Second example\n");
 
-         begin array A, B, C[1:5,1:5]; integer i, j, k;
+         begin array A [1 : 5, 1 : n];
+	       array B [1 : 5, 1 : n];
+	       array C [1 : 5, 1 : n]; integer i, j, k;
             comment create test matrix A;
             testmatr(n, A);
             print_matrix("A", n, A);
