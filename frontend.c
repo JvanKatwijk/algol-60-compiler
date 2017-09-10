@@ -1377,7 +1377,8 @@ int i;
 
 
 void	compile (char *src_name) {
-char	v [200];
+char	v [1024];
+treenode	*dummy;
 treenode	*environment;
 treenode	 *st;
 //	some basic initializations
@@ -2057,6 +2058,8 @@ struct string_element *t;
 int	i;
 int	l = length (s);
 	t = (struct string_element *)malloc (sizeof(struct string_element) +l);
+	t -> left	= NULL;
+	t -> right	= NULL;
 	for (i = 0; i < l; i ++) 
 	   t -> string_value [i] = s [i];
 	t -> string_value [i] = (char)0;
