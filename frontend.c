@@ -5884,8 +5884,8 @@ void	statement_code (treenode *p, treenode *s) {
 	      add_to_output ("L");
 	      add_to_output (c_nameof (get_label (s)));
 	      add_to_output (":");
-	      if (get_nodeid (s) == NULL_STAT)
-	         add_to_output (";");
+//	      if (get_nodeid (s) == NULL_STAT)
+//	         add_to_output (";");
 	   }
 
 	   switch (get_nodeid (s)) {
@@ -5898,6 +5898,7 @@ void	statement_code (treenode *p, treenode *s) {
 	         break;
 
 	      case NULL_STAT:
+	         add_to_output ("; // null statement \n");
 	         break;
 
 	      case GOTO_STAT:
