@@ -44,7 +44,7 @@ procedure outreal    (channel, v); value channel, v; integer channel; real v; c_
 
 procedure ininteger (channel, v); value channel; integer channel, v; c_procedure;
 procedure inreal (channel, v); value channel; integer channel; real v; c_procedure;
-
+procedure outreal_16_11 (channel, v); value channel, v; integer channel; real v; c_procedure;
 real procedure maxreal; c_procedure;
 real procedure minreal; c_procedure;
 

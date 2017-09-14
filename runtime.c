@@ -908,6 +908,10 @@ int n, j, k, m, p, fl, nines;
 	   outterminator (channel);
 }
 
+void	outreal_16_11 (int channel, double v) {
+	fprintf (stdout, " %16.11f ", v);
+}
+
 //	non standard functions
 
 int	__lwb (int *d, int i) {

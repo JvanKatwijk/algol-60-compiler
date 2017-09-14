@@ -98,7 +98,7 @@ begin
         If you have trouble with this, just replace the body of
         this procedure with:
         
-            outreal(channel, x)
+            outreal_16_11 (channel, x)
             
         but then you'll have to manually verify these values are
         rounded correctly.
@@ -116,7 +116,7 @@ begin
         integer channel;
         real x;
     begin
-	outreal (channel, x);
+	outreal_16_11 (channel, x);
     end outbigreal;
     
     comment
@@ -252,6 +252,7 @@ begin
     
     comment END GLOBAL DECLARATONS ;
 
+    number_of_iterations:= 7 * 16000000;
     outstring (1, "Ready to begin John Walker's floating point accuracy and performance benchmark.");
     outinteger (1, number_of_iterations);
     outstring  (1, " will be made\n");
@@ -307,7 +308,6 @@ begin
     
     of_field := 1; sa_field := 2;
  
-    number_of_iterations:= 160000000;
 comment
     number_of_iterations:= 1;
     
@@ -381,27 +381,27 @@ comment
     outstring  (1, "  Marginal_ray    ");
     outbigreal (1, od_sa[marginal_ray, of_field]);
     outstring  (1, "   ");
-    outreal    (1, od_sa[marginal_ray, sa_field]); outstring(1, "\n");
+    outbigreal (1, od_sa[marginal_ray, sa_field]); outstring(1, "\n");
     
     outstring  (1, "  Paraxial_ray    ");
     outbigreal (1, od_sa[paraxial_ray, of_field]);
     outstring  (1, "   ");
-    outreal    (1, od_sa[paraxial_ray, sa_field]); outstring(1, "\n");
+    outbigreal (1, od_sa[paraxial_ray, sa_field]); outstring(1, "\n");
     
     outstring  (1, "Longitudinal spherical aberration: ");
-    outreal    (1, aber_lspher); outstring(1, "\n");
+    outbigreal (1, aber_lspher); outstring(1, "\n");
     outstring  (1, "    (Maximum permissible): ");
-    outreal    (1, max_lspher); outstring(1, "\n");
+    outbigreal (1, max_lspher); outstring(1, "\n");
     
     outstring  (1, "Offense against sine condition (coma): ");
-    outreal    (1, aberr_osc); outstring(1, "\n");
+    outbigreal (1, aberr_osc); outstring(1, "\n");
     outstring  (1, "    (Maximum permissible): ");
-    outreal    (1, mac_osc); outstring(1, "\n");
+    outbigreal (1, mac_osc); outstring(1, "\n");
     
     outstring  (1, "Axial chromatic aberration: ");
-    outreal    (1, aberr_lchrom); outstring(1, "\n");
+    outbigreal (1, aberr_lchrom); outstring(1, "\n");
     outstring  (1, "    (Maximum permissible): ");
-    outreal    (1, max_lchrom); outstring(1, "\n");
+    outbigreal (1, max_lchrom); outstring(1, "\n");
 
     outstring  (1,  "Measured run time in seconds should be divided by ");
     outinteger (1,   number_of_iterations / 1000);

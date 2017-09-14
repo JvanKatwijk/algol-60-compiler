@@ -6,10 +6,30 @@ jff-algol: A simple ALGOL 60 to C translator
 In the period 2002, 2003 I wrote in spare time, as a hobby project,
 a simple Algol 60 to C translator. The rationale was to show the
 semantics of (some of the) Algol 60 constructs in terms of C expressions. 
+
+The objective was therefore to translate Algol 60 constructs into
+C equivalents  rather than to some "intermediate stack machine".
+
+As an example (see example 1 in the example directory), the function
+	
+	integer procedure fac (n); value n; integer n;
+	   fac := if n < 1 then 1 else n * fac (n - 1);
+
+is translated into
+
+
+	int _fac_42 (int n) {
+	int __res_val;
+	   __res_val = ((n) < (1)) ? 1 : (n) * (_fac_42 ((n) - (1)));
+	return __res_val;
+	}
+
 The resulting compiler compiled Algol 60, using C as intermediate language
-and - if the compilation succeeded - generated an executable. 
-For those interested: it was certainly capable of handling the
-"man or boy" example.
+and - if the mapping to C succeeded - is invoked a C compiler and
+generated an executable. 
+For those interested: it was certainly capable of handling things like the
+"man or boy" example (although that takes more lines in C than the fac example
+above).
 
 Since it was a fun project, the compiler was named "jff-algol", i.e.
 Just-For-Fun-Algol.
