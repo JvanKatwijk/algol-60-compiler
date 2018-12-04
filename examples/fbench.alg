@@ -252,7 +252,7 @@ begin
     
     comment END GLOBAL DECLARATONS ;
 
-    number_of_iterations:= 7 * 16000000;
+    number_of_iterations:= 100000000;
     outstring (1, "Ready to begin John Walker's floating point accuracy and performance benchmark.");
     outinteger (1, number_of_iterations);
     outstring  (1, " will be made\n");

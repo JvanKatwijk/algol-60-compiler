@@ -40,7 +40,7 @@
 
 	'integer' i, n, val, max, NN;
 
-	NN := 1000;
+	NN := 500;
 
 	outstring  (1, "Hi!\n                n           iterations\n");
 	'for' i := 1 'step' 1 'until' NN 'do' 'begin'
@@ -53,11 +53,15 @@
 
 	n := 0;  max := -1;
 	'for' i := 1 'step' 1 'until' NN 'do' 'begin'
+         outstring (1, "i = "); outinteger (1, i); outstring (1, "  ");
+	 outinteger (1, max); outstring (1, "\n");
 	do:
-		n := n + 1;
-		val := doit (n);
-		'if' val <= max 'then' 'goto' do;
-
+	        'if' n < 100000 'then'
+	        'begin'
+		   n := n + 1;
+		   val := doit (n);
+		   'if' val <= max 'then' 'goto' do;
+	        'end';
 		outinteger (1, n);
 	        outstring  (1, " ");
 	        outinteger (1, val);

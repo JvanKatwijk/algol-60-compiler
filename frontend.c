@@ -3857,12 +3857,12 @@ int	num_of_bounds	= 0;
 	   bnd = get_nextnode (bnd);
 	}
 
-	if ((static_bounds) && (num_of_bounds == 1))
-	   set_static_array (s);
-	else {
+//	if ((static_bounds) && (num_of_bounds == 1))
+//	   set_static_array (s);
+//	else {
 	   set_needs_deallocation (environment);
 	   set_subtype_needs_descriptor (s);
-	}
+//	}
 
 	set_elaborated (s);
 	link_to_environmental_proc (s);
@@ -6926,6 +6926,7 @@ static char v [127];
 
    	case ARRAY_TYPE:
 		sprintf (&v[0], "%s *", type_name (element_type (t)));
+	        fprintf (stderr, "in arraytype %s\n", v);
 		return v;
 
    	case PROC_TYPE:

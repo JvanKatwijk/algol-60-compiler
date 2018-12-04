@@ -13,7 +13,7 @@ begin
       if k <= 0 then A := x4 + x5 else B;
    end;
 	count := 0;
-   for i := 1 step 1 until 15 do
+   for i := 1 step 1 until 25 do
    begin
       outinteger (1, A (i, 1, -1, -1 , 1 , 1));
       newline (1);
