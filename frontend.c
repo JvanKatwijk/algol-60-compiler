@@ -3857,12 +3857,12 @@ int	num_of_bounds	= 0;
 	   bnd = get_nextnode (bnd);
 	}
 
-//	if ((static_bounds) && (num_of_bounds == 1))
-//	   set_static_array (s);
-//	else {
+	if ((static_bounds) && (num_of_bounds == 1) && (proc_level_of (s) == 0))
+	   set_static_array (s);
+	else {
 	   set_needs_deallocation (environment);
 	   set_subtype_needs_descriptor (s);
-//	}
+	}
 
 	set_elaborated (s);
 	link_to_environmental_proc (s);
@@ -5392,7 +5392,6 @@ treenode	*bnd;
 
 	if (is_static_array (d)) {
 	      st = get_type_of_var (d);
-
 	      add_to_output ("extern ");
 	      add_to_output (c_type_name (element_type (d)));
 	      add_to_output (" "); add_to_output (c_nameof (d));
@@ -7775,7 +7774,6 @@ int	is_static_array	(treenode *d) {
 	ASSERT ((d != (treenode *)0), ("Expert error 64a"));
 	return is_arithmetic_array (d) && (get_flags (d) & STATIC_ARRAY);
 }
-
 int	can_be_assigned_to (treenode *d) {
 treenode *t;
 
