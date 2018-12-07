@@ -2178,9 +2178,16 @@ int state	= 1;
 	    get_scannerchar ();
 	}
 
-	if (ch == '.') goto state_4; 
+	if (ch == '.') {
+	   if (i == 0) {
+	      temp [i ++] = '0';
+	   }
+	   goto state_4; 
+	}
 	if (ch == '@' || ch == 'e' || ch == 'E') {
-	   temp [i++] = '.';
+	   if (i == 0)
+	      temp [i ++] = '0';
+	   temp [i ++] = '.';
 	   temp [i ++] = '0';
 	   goto state_5;
 	}
@@ -2411,7 +2418,7 @@ char	*v;
 	          return;
 	      }
 
-	      if (Is_Digit (ch)) {
+	      if (Is_Digit (ch) || (ch == '.')) {
 	         t3 = Read_Number (&v);
 	         make_symbol (sym, t3, v, t1, t2);
 	         return;
