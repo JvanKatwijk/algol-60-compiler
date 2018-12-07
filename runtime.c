@@ -613,7 +613,7 @@ void stop () {
 }
 
 void fault (char *s, double v) {
-	printf (%s, s);
+	printf ("%s", s);
 	printf ("%d \n", (int) v);
 	exit (22);
 }
