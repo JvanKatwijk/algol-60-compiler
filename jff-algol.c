@@ -35,6 +35,7 @@
 //
 #include	<time.h>
 #include	<stdio.h>
+#include	<stdlib.h>
 #include	<string.h>
 #include	<sys/types.h>
 #include	<sys/stat.h>
@@ -67,7 +68,7 @@ char	*tail;
 	if (infile == (char *)0)
 	   return 0;
 
-	sprintf (v0, infile);
+	sprintf (v0, "%s", infile);
 	tail = strstr (v0, ".alg");
 	if ((tail == (char *)0) || (tail [4] != (char)0)) {
 	   fprintf (stderr, "File %s does not end with \".alg\"\n", infile);
