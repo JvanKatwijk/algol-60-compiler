@@ -246,7 +246,7 @@ int u_min_l, temp;
 //	The call may contain more
 //	parameters, depending on the 
 //	dimensionality. These params are all ints
-char * __jff_element_address (char *v, int *desc, int dim, ...) {
+void * __jff_element_address (char *v, int *desc, int dim, ...) {
 int i, ndims, u_min_l, temp;
 va_list vl;
 
