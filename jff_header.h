@@ -54,6 +54,9 @@ extern	char	*__get_thunk_link (char **, int);
 extern	char	*__get_switch_address (char **, int, char);
 extern	char	*__get_switch_link (char **, int);
 extern	double	read_real (int);
+int     raw_in  (int);  
+int     raw_out (int fd, int val);
+
 #define	DOPE_BASE	2
 #define	true	1
 #define	false	0

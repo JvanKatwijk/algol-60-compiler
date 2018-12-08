@@ -43,9 +43,10 @@
 //
 #include	<time.h>
 #include	"frontend.h"
+#include	<string.h>
 
 #ifndef VERSION
-#define VERSION 2
+#define VERSION "2.3"
 #endif
 
 char	*compile_time	= "no time specified";

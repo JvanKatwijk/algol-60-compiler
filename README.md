@@ -24,9 +24,9 @@ is translated into
 	return __res_val;
 	}
 
-The resulting compiler compiled Algol 60, using C as intermediate language
-and - if the mapping to C succeeded - is invoked a C compiler and
-generated an executable. 
+The resulting compiler compiled Algol 60, using C as intermediate language,
+and - if the mapping to C succeeded - invoked a C compiler and
+an executable is generated. 
 For those interested: it was certainly capable of handling things like the
 "man or boy" example (although that takes more lines in C than the fac example
 above).

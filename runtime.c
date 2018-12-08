@@ -186,7 +186,7 @@ int	no_of_el, i, ndims, el_size_o, el_size_n;;
 	   }
 	   return;
 	}
-//	when we are here, apperently, the types of value of src and dest are
+//	when we are here, apparently, the types of value of src and dest are
 //	different.
 //	But basically it is simple, either float -> int or int -> float
 	for (i = 0; i < no_of_el; i ++) {
