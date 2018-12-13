@@ -13,11 +13,12 @@ begin
       if k <= 0 then A := x4 + x5 else B;
    end;
 	count := 0;
-   for i := 1 step 1 until 25 do
+   for i := 1 step 1 until 15 do
    begin
       outinteger (1, A (i, 1, -1, -1 , 1 , 1));
       newline (1);
-      outstring (1, "Recursie diepte "); outinteger (1, count);
+      outstring (1, "Recursie diepte voor "); outinteger (1, i);
+      outstring (1, " is "); outinteger (1, count);
       count := 0;
       newline (1);
    end;

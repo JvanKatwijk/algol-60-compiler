@@ -9,9 +9,9 @@ begin
       h := 0;
       for a := l step 1 until u do
 	begin
-h := h + b;
-outinteger (1, h);
-end;
+           h := h + b;
+           outinteger (1, h);
+        end;
       sum := h;
    end;
    for i := 1 step 1 until 10 do A [i] := i * i;
