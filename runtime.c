@@ -214,9 +214,9 @@ int	no_of_el, i, ndims, el_size_o, el_size_n;;
 int	*__jff_descriptor_for_value (int *old_desc, int el_size, char *lf) {
 int	ndims, i;
 int	*new_desc;
-	ndims = old_desc [0] >> 8;
-	new_desc = (int *) __alloc_block (sizeof (int) * (ndims + DOPE_BASE), lf);
-	for (i = 0; i < ndims + DOPE_BASE; i ++) 
+	ndims = (old_desc [0] >> 8) & 0xFF;
+	new_desc = (int *) __alloc_block (sizeof (int) * (2 * ndims + DOPE_BASE), lf);
+	for (i = 0; i < 2 * ndims + DOPE_BASE; i ++) 
 	   new_desc [i] = old_desc [i];
 
 	new_desc [0] = (ndims << 8) + el_size;
