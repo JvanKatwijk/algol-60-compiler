@@ -46,7 +46,7 @@ stp:	    for i := 0 step 1 until n1 do c[i] := b[i];
 	    v0 := -q * s1 ; v1 := s0 - s1 * p;
 	    det0 := v1 * s0 - v0 * s1;
 
-	    if  fabs(det0) < eps0 then begin
+	    if  abs(det0) < eps0 then begin
 		p := p + 1 ; q := q + 1 ; goto stp;
 	    end;
 	    det1 := s0 * r1 - s1 * r0;
@@ -54,20 +54,20 @@ stp:	    for i := 0 step 1 until n1 do c[i] := b[i];
 	    incrp := det1 / det0 ; incrq := det2 / det0;
 	    p := p + incrp ; q := q + incrq;
 
-	    if  fabs(r0) < eps1 then begin
-		if fabs(r1) < eps1 then begin
+	    if  abs(r0) < eps1 then begin
+		if abs(r1) < eps1 then begin
 		    ex[m1] := 1 ; goto next;
 		end;
 	    end;
 
-	    if fabs(incrp) < eps2 then begin
-		if fabs(incrq) < eps2 then begin
+	    if abs(incrp) < eps2 then begin
+		if abs(incrq) < eps2 then begin
 		    ex[m1] := 2 ; goto next;
 		end;
 	    end;
 
-	    if fabs(incrp / p) < eps3 then begin
-		if fabs(incrq / q) < eps3 then begin
+	    if abs(incrp / p) < eps3 then begin
+		if abs(incrq / q) < eps3 then begin
 		    ex[m1] := 3 ; goto next;
 		end;
 	    end;
