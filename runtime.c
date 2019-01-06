@@ -582,9 +582,9 @@ char *l, *(*fn) ();
 }
 
 // Second part: code for prelude functions
-//double abs (double e) {
-//	return (e < 0.0 ? -e : e);
-//}
+double fabs (double e) {
+	return (e < 0.0 ? -e : e);
+}
 
 int iabs (int e) {
 	return (e < 0 ? -e : e);

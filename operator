@@ -70,6 +70,8 @@ unary    [ + 10 ((integer integer constant "%L")
          [ - 10 ((integer integer constant " -(%L)")
                  (real real constant " -(%L)")) ]
          [ not 5 ((boolean boolean constant "! (%L)"))]
+	 [ abs 10 ((integer integer "iabs (%L)" )
+	          (real    real    "fabs (%L)" ))]
 end;
 
 
