@@ -1,6 +1,6 @@
 integer procedure iabs (x); value x; integer x; c_procedure;
-real procedure fabs  (x); value x; real x; c_procedure;
-real procedure abs   (x); value x; real x;  abs := fabs (x);
+real    procedure fabs (x); value x; real x; c_procedure;
+real    procedure abs  (x); value x; real x; abs := fabs (x);
 integer	procedure sign (x); value x; real x; c_procedure;
 integer procedure entier (e); value e; real e; c_procedure;
 real procedure sqrt (e); value e; real e; c_procedure;

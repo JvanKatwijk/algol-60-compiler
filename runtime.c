@@ -206,7 +206,6 @@ int	no_of_el, i, ndims, el_size_o, el_size_n;;
 	   }
 	}
 }
-
 //
 //	In case of a by value array parameter, a new descriptor
 //	is generated
@@ -847,6 +846,14 @@ void inreal (int channel, char *Lv, double (*Av) (char *, double),
 void outreal (int channel, double v) {
 int n, j, k, m, p, fl, nines;
 
+	if (v != v) {	// nan???
+	   outstring (channel, " nan  ");
+	   return;
+	}
+	if (!isfinite (v)) {
+	   outstring (channel, " inf  ");
+	   return;
+	}
 	m = 0;
 	n = 10;
 	if (v < 0.0) {
