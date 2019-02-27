@@ -593,6 +593,10 @@ double epsilon () {
 	return (double) 1.0E-64;
 }
 
+char	isinfinite (double x) {
+	return !isfinite (x);
+}
+
 double maxreal () {
 	return (double) 1.0E64;
 }
@@ -748,7 +752,7 @@ int __ins (int fd) {
 int n;
 
 	n = __read_char (fd, "0123456789-+ ;\n");
-	fprintf (stderr, "gelezen char %d\n", n);
+//	fprintf (stderr, "gelezen char %d\n", n);
 	return n > 11 ? 13 : n;
 }
 
@@ -1024,5 +1028,4 @@ double	__fpow (double x, double r) {
   else
       fault ("expr undefined", x);
 }
-
 

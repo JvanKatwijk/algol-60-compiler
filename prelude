@@ -11,6 +11,7 @@ real procedure ln (e); value e; real e; c_procedure;
 real procedure exp (e); value e; real e; c_procedure;
 real procedure epsilon; c_procedure;
 real procedure random; c_procedure;
+boolean procedure isinfinite (x); value x; real x; c_procedure;
 
 procedure stop; c_procedure;
 procedure fault (str, r); value r; string str; real r; c_procedure;

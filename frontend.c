@@ -1404,7 +1404,8 @@ treenode	 *st;
 
 	analyse ((treenode *)0, environment);
 	if (sem_errors != 0) {
-	   printf ("analysis %s complete, %d errors\n", infile, sem_errors);
+	   fprintf (stderr, 
+	         "analysis %s complete, %d errors\n", infile, sem_errors);
 	   exit (EXIT_FAILURE);
 	}
 
@@ -3860,7 +3861,6 @@ int	num_of_bounds	= 0;
 	   num_of_bounds ++;
 	   if (!is_constant_expression (bnd))  {
 	      static_bounds = FALSE;
-	      break;
 	   }
 	   bnd = get_nextnode (bnd);
 	}
@@ -7590,6 +7590,7 @@ treenode *result_type (treenode *n) {
 //	for any entity, determine a type
 treenode *type_of (treenode *n) {
 treenode *m = n;
+
 	while (n != (treenode *)0) {
 	   switch (get_nodeid (n)) {
 	      case VARIABLE:
