@@ -920,6 +920,14 @@ int n, j, k, m, p, fl, nines;
 }
 
 void	outreal_16_11 (int channel, double v) {
+	if (v != v) {	// nan???
+	   outstring (channel, " nan  ");
+	   return;
+	}
+	if (!isfinite (v)) {
+	   outstring (channel, " inf  ");
+	   return;
+	}
 	fprintf (stdout, " %16.11f ", v);
 }
 
@@ -994,9 +1002,11 @@ FILE	*f;
 //
 int	__ipow (int a, int b) {
 int k, result;
-   if ((b < 0) || ((a == 0) && (b == 0))) {
+   if ((a == 0) && (b == 0)) {
       fault ("expi undefined", b);
    }
+   if (a == 1) 
+	return 1;
    result = 1;
    for (k = 1; k <= b; k ++) result = result * a;
    return result;

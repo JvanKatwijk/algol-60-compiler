@@ -4447,8 +4447,12 @@ void	analyse_conditional (treenode *b, treenode *t, treenode *exp, int ct) {
 	   set_error (exp);
 	   return;
 	}
-
-	set_expr_type (exp, t);
+	if (!is_compatible (type_of (get_condition_thenpart (exp)),
+	                    type_of (get_condition_elsepart (exp)))) {
+	   set_error (exp);
+	   return;
+	}
+	set_expr_type (exp, type_of (get_condition_elsepart (exp)));
 }
 
 void	analyse_unary_expression (treenode *b, treenode *t, treenode *exp, int ct) {
@@ -5905,7 +5909,8 @@ void	statement_code (treenode *p, treenode *s) {
 	         break;
 
 	      case NULL_STAT:
-	         add_to_output ("; // null statement \n");
+	         if (get_nextnode (s) == NULL)
+	            add_to_output ("; // null statement \n");
 	         break;
 
 	      case GOTO_STAT:
