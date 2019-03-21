@@ -4951,7 +4951,7 @@ char	*t;
 	   add_to_output ("(int *)(__get_array_descr (&p1, ");
 	   add_to_output (num_to_string (i));
 	   add_to_output (", \'"); add_to_output (char_to_string (t [0]));
-	   add_to_output ("\', ");
+	   add_to_output ("\')), ");
 	   add_to_output ("("); add_to_output (t);
 	   add_to_output (" *)(__get_array_address (&p1, ");
 	   add_to_output (num_to_string (i));
