@@ -1,0 +1,74 @@
+typedef ENTIER:  A_int:   int;
+typedef boolean:  A_bool:  char;
+typedef REEL:     A_real:  double;
+typedef void:     void:    void;
+FIN;
+
+binary [ + 7  ((ENTIER ENTIER ENTIER constant "(%L) + (%R)")
+                 (ENTIER REEL REEL constant "((double)(%L)) +  (%R)")
+                 (REEL REEL REEL constant "(%L) + (%R)")
+                 (REEL ENTIER REEL constant "(%L) + ((double)(%R))"))]
+         [ * 8 ((ENTIER ENTIER ENTIER constant "(%L) * (%R)")
+                 (ENTIER REEL REEL constant "((double)(%L)) * (%R)")
+                 (REEL ENTIER REEL constant "(%L) * ((double)(%R))")
+                 (REEL REEL REEL constant "(%L) * (%R)")) ]
+         [ ^ 9 ((ENTIER ENTIER ENTIER "(__ipow(%L,%R))")
+                 (REEL ENTIER REEL " __npow (%L, %R)")
+                 (ENTIER REEL REEL "__fpow ((double)%L, %R)")
+                 (REEL REEL REEL "__fpow (%L, %R)")) ]
+         [ / 8 ((ENTIER ENTIER ENTIER constant "(%L) / (%R)")
+                 (ENTIER REEL REEL constant "((double)(%L))/(%R)")
+                 (REEL ENTIER REEL constant "(%L) /((double)(%R))")
+                 (REEL REEL REEL constant "(%L)/(%R)")) ]
+	 [ mod 8 ((ENTIER ENTIER ENTIER "__mod (%L, %R)" ))]
+         [ - 7 ((ENTIER ENTIER ENTIER constant "(%L) - (%R)")
+                 (ENTIER REEL REEL constant "((double)%L)-(%R)")
+                 (REEL REEL REEL constant "(%L) - (%R)")
+                 (REEL ENTIER REEL constant "%L - (double)%R " ) ) ]
+         [ <=  6 ((ENTIER ENTIER boolean "(%L) <= (%R)")
+                 (REEL REEL boolean "(%L) <= (%R)")
+                 (ENTIER REEL boolean "((double)(%L))<= (%R)")
+                 (REEL ENTIER boolean "(%L) <= ((double)(%R))"))]
+         [ >=  6 ((ENTIER ENTIER boolean "(%L) >= (%R)")
+                 (REEL REEL boolean "(%L) >= (%R)")
+                 (ENTIER REEL boolean "((double)(%L)) >= (%R)")
+                 (REEL ENTIER boolean "(%L) >= ((double)(%R))"))]
+         [ > 6  ((ENTIER ENTIER boolean "(%L) > (%R) ")
+        	 (REEL REEL boolean "(%L) > (%R)")
+        	 (ENTIER REEL boolean "((double)(%L)) > (%R)")
+        	 (REEL ENTIER boolean "(%L) > ((double)(%R))"))]
+         [ < 6  ((ENTIER ENTIER boolean "(%L) < (%R) ")
+        	 (REEL REEL boolean "(%L) < (%R)")
+        	 (ENTIER REEL boolean "((double)(%L)) < (%R)")
+        	 (REEL ENTIER boolean "(%L) < ((double)(%R))"))]
+         [ = 6  ((ENTIER ENTIER boolean "(%L) == (%R)")
+                 (REEL REEL boolean "(%L) == (%R)")
+                 (boolean boolean boolean "(%L) == (%R)")
+                 (ENTIER REEL boolean "((double)(%L)) == (%R)")
+                 (REEL ENTIER boolean "(%L) == ((double)(%R))" ))]
+         [ ^= 6 ((ENTIER ENTIER boolean "(%L) != (%R)")
+                 (REEL REEL boolean "(%L) != (%R) ")
+                 (boolean boolean boolean "(%L) != (%R)")
+                 (ENTIER REEL boolean "((double)(%L)) != (%R)")
+                 (REEL ENTIER boolean "(%L) != ((double)(%R))" ))]
+	 [ notequal 6 ((ENTIER ENTIER boolean "(%L) != (%R)")
+                 (REEL REEL boolean "(%L) != (%R) ")
+                 (boolean boolean boolean "(%L) != (%R)")
+                 (ENTIER REEL boolean "((double)(%L)) != (%R)")
+                 (REEL ENTIER boolean "(%L) != ((double)(%R))" ))]
+
+         [ div 8 ((ENTIER ENTIER ENTIER constant  "(%L) /(%R)"))]
+         [ equiv 1 ((boolean boolean boolean "(%L) == (%R)")) ]
+         [ implies 2 ((boolean boolean boolean "(((%L) & (%R)) || (!(%L) & !(%R)))")) ]
+         [ ET 4 ((boolean boolean boolean "(%L) && (%R)"))]
+         [ or 3 ((boolean boolean boolean "(%L) || (%R)"))]
+FIN;
+
+unary    [ + 10 ((ENTIER ENTIER constant "%L")
+                 (REEL REEL constant "%L")) ]
+         [ - 10 ((ENTIER ENTIER constant " -(%L)")
+                 (REEL REEL constant " -(%L)")) ]
+         [ not 5 ((boolean boolean constant "! (%L)"))]
+FIN;
+
+

@@ -1,0 +1,67 @@
+ENTIER procedure iabs (x); VALEUR x; ENTIER x; c_procedure;
+REEL    procedure fabs (x); VALEUR x; REEL x; c_procedure;
+REEL    procedure ABS  (x); VALEUR x; REEL x; ABS := fabs (x);
+ENTIER	procedure sign (x); VALEUR x; REEL x; c_procedure;
+ENTIER	procedure SIGNE (x); VALEUR x; REEL x;  SIGNE := sign (x);
+ENTIER procedure entier (e); VALEUR e; REEL e; c_procedure;
+REEL procedure sqrt (e); VALEUR e; REEL e; c_procedure;
+REEL procedure RAC2 (e); VALEUR e; REEL e; RAC2 := sqrt (e);
+REEL proc sin (a); VALEUR a; REEL a; c_procedure;
+REEL proc cos (a); VALEUR a; REEL a; c_procedure;
+REEL procedure arctan (e); VALEUR e; REEL e; c_procedure;
+REEL procedure ln (e); VALEUR e; REEL e; c_procedure;
+REEL procedure exp (e); VALEUR e; REEL e; c_procedure;
+REEL procedure epsilon; c_procedure;
+REEL procedure random; c_procedure;
+boolean procedure isinfinite (x); VALEUR x; REEL x; c_procedure;
+
+procedure stop; c_procedure;
+procedure fault (str, r); VALEUR r; string str; REEL r; c_procedure;
+ENTIER procedure length (str); string str; c_procedure;
+
+ENTIER procedure open_file (str, kind); VALEUR kind; string str; ENTIER kind; c_procedure;
+
+ENTIER procedure close_file (channel); VALEUR channel; ENTIER channel; c_procedure;
+
+procedure space (channel); VALEUR channel; ENTIER channel; c_procedure;
+
+procedure newline (channel); VALEUR channel; ENTIER channel;c_procedure;
+
+procedure outstring (channel, str);
+VALEUR channel; ENTIER channel; string str; c_procedure;
+
+procedure outterminator (channel); VALEUR channel; ENTIER channel; c_procedure;
+
+procedure inchar (channel, str, v);
+VALEUR channel; ENTIER channel, v; string str; c_procedure;
+
+ENTIER procedure outchar (channel, str, v);
+VALEUR channel, v; ENTIER channel, v; string str; c_procedure;
+
+REEL procedure read_REEL (channel);
+VALEUR channel; ENTIER channel; c_procedure;
+
+procedure outinteger (channel, v);
+VALEUR channel, v; ENTIER channel, v; c_procedure;
+
+procedure outreal    (channel, v); VALEUR channel, v; ENTIER channel; REEL v; c_procedure;
+
+procedure ininteger (channel, v); VALEUR channel; ENTIER channel, v; c_procedure;
+procedure inreal (channel, v); VALEUR channel; ENTIER channel; REEL v; c_procedure;
+procedure outreal_16_11 (channel, v); VALEUR channel, v; ENTIER channel; REEL v; c_procedure;
+procedure outreal_e_10 (channel, v); VALEUR channel, v; ENTIER channel; REEL v; c_procedure;
+REEL procedure maxreal; c_procedure;
+REEL procedure minreal; c_procedure;
+
+comment some non standard procedures;
+ENTIER procedure i_lwb (a, i); VALEUR i; ENTIER TABLEAU a; ENTIER i;c_procedure;
+ENTIER procedure b_lwb (a, i); VALEUR i; boolean TABLEAU a; ENTIER i; c_procedure;
+ENTIER procedure r_lwb (a, i); VALEUR i; REEL TABLEAU a; ENTIER i; c_procedure;
+ENTIER procedure i_upb (a, i); VALEUR i; ENTIER TABLEAU a; ENTIER i; c_procedure;
+ENTIER procedure b_upb (a, i); VALEUR i; boolean TABLEAU a; ENTIER i; c_procedure;
+ENTIER procedure r_upb (a, i); VALEUR i; REEL TABLEAU a; ENTIER i; c_procedure;
+
+ENTIER procedure raw_in (channel); VALEUR channel; ENTIER channel; c_procedure;
+procedure raw_out (channel, val); VALEUR channel, val; ENTIER channel, val; c_procedure;
+
+
