@@ -3,8 +3,8 @@ jff_a2c_SOURCES = frontend.c frontend.h
 jff_algol_SOURCES = jff-algol.c frontend.h
 lib_LIBRARIES = lib_jff.a
 lib_jff_a_SOURCES = runtime.c jff_header.h
-pkgdata_DATA = operator prelude
-EXTRA_DIST = doc examples operator prelude jff_header.template
+pkgdata_DATA = operator_e operator_f prelude_e prelude_f
+EXTRA_DIST = doc examples operator_e operator_f prelude_e prelude_f jff_header.template
 include_HEADERS = jff_header.h
 #BUILT_SOURCES=jff_header.h
 
