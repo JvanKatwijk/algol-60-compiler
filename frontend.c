@@ -46,7 +46,7 @@
 #include	<string.h>
 
 #ifndef VERSION
-#define VERSION "2.3"
+#define VERSION "2.4"
 #endif
 
 char	*compile_time	= "no time specified";

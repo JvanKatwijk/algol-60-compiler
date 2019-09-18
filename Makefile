@@ -242,7 +242,7 @@ CFLAGS = -g -O2
 CPP = gcc -E
 CPPFLAGS = 
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"jff-a2c\" -DVERSION=\"2.1.2\" -DSTDC_HEADERS=1
+DEFS = -DPACKAGE_NAME=\"\" -DPACKAGE_TARNAME=\"\" -DPACKAGE_VERSION=\"\" -DPACKAGE_STRING=\"\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"jff-a2c\" -DVERSION=\"2.1.4\" -DSTDC_HEADERS=1
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -275,7 +275,7 @@ RANLIB = ranlib
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = 
-VERSION = 2.1.2
+VERSION = 2.1.4
 abs_builddir = /usr/shared/sdr-j-development/systems/algol-60-compiler
 abs_srcdir = /usr/shared/sdr-j-development/systems/algol-60-compiler
 abs_top_builddir = /usr/shared/sdr-j-development/systems/algol-60-compiler
