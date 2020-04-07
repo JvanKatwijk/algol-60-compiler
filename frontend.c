@@ -5267,7 +5267,7 @@ treenode	*fp;
 	if (need_static_link (p)) {
 	   add_to_output ("struct ");
 	   pr_type_of_ar (get_environmental_proc (get_decl_env (p)));
-	   add_to_output (" *ELP");
+	   add_to_output (" *ELP_");
 
 	   if (fp == (treenode *)0)
 	      return;
@@ -5338,11 +5338,11 @@ void	init_activation_record (treenode *p) {
 treenode *fp;
 
 	if (need_static_link (p)) 
-	   add_to_output ("LP -> __l_field = ELP;\n");
+	   add_to_output ("LP -> __l_field = ELP_;\n");
 
 	fp = get_proc_parameters (p);
 	while (fp != (treenode *)0) {
-//	   if (is_accessed (fp))  // Known bug, ACCESS not set properly
+	   if (is_accessed (fp))  // Known bug, ACCESS not set properly
 	      init_parameter_in_ar (p, fp);
 	   fp = get_nextnode (fp);
 	}
@@ -7231,6 +7231,11 @@ static char	v [255];
 	      return get_c_name (d);
 
 	   case PARAM_DECL:
+	   {  char *n = get_decl_ident (d);
+	      sprintf (v, "%s_", n);
+	      return v;
+	   }
+
 	   case THUNK:
 	      return get_decl_ident (d);
 
@@ -7934,7 +7939,8 @@ int	is_proc_as_parameter (treenode *p) {
 int	is_accessed (treenode *d) {
 
 	ASSERT ((d != (treenode *)0), ("Expert error 77\n"));
-	return get_flags (d) & IS_ACCESSED;
+//	return get_flags (d) & IS_ACCESSED;
+	return (1);
 }
 
 void	set_accessed (treenode *d) {
