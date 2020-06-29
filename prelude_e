@@ -60,6 +60,6 @@ integer procedure b_upb (a, i); value i; boolean array a; integer i; c_procedure
 integer procedure r_upb (a, i); value i; real array a; integer i; c_procedure;
 
 integer procedure raw_in (channel); value channel; integer channel; c_procedure;
-procedure raw_out (channel, val); value channel, val; integer channel, val; c_procedure;
+integer procedure raw_out (channel, val); value channel, val; integer channel, val; c_procedure;
 
 

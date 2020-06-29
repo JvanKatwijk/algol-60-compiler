@@ -5342,7 +5342,7 @@ treenode *fp;
 
 	fp = get_proc_parameters (p);
 	while (fp != (treenode *)0) {
-	   if (is_accessed (fp))  // Known bug, ACCESS not set properly
+//	   if (is_accessed (fp))  // Known bug, ACCESS not set properly
 	      init_parameter_in_ar (p, fp);
 	   fp = get_nextnode (fp);
 	}
@@ -5572,9 +5572,18 @@ void	generate_elab_code	(treenode *d, treenode *b) {
 //	do not mess too much
 
 void	generate_proc_code (treenode *p) {
-
-	if ((p == (treenode *)0) || !is_accessed (p))
+treenode	*q;
+	if (p == (treenode *)0)
 	   return;
+
+	q = p;
+	while (q != NULL) {
+	   if (!is_accessed (q)) {
+//	      fprintf (stderr, "Name of proc %s\n", c_nameof (q));
+	      return;
+	   }
+	   q = get_environmental_proc (get_decl_env (q));
+	}
 
 	if (is_proc_as_parameter (p))
 	   generate_envelope (p);
@@ -7939,7 +7948,7 @@ int	is_proc_as_parameter (treenode *p) {
 int	is_accessed (treenode *d) {
 
 	ASSERT ((d != (treenode *)0), ("Expert error 77\n"));
-//	return get_flags (d) & IS_ACCESSED;
+	return get_flags (d) & IS_ACCESSED;
 	return (1);
 }
 
@@ -8203,7 +8212,8 @@ struct env_descriptor *get_block_table (struct X_array *nl, int index) {
 	return (struct env_descriptor *)my_element (nl, index);
 }
 
-void	set_block_table (struct X_array *nl, int index, struct env_descriptor v) {
+void	set_block_table (struct X_array *nl,
+	                         int index, struct env_descriptor v) {
 struct env_descriptor *s = get_block_table (nl, index);
 	*s = v;
 }

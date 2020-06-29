@@ -62,6 +62,6 @@ ENTIER procedure b_upb (a, i); VALEUR i; boolean TABLEAU a; ENTIER i; c_procedur
 ENTIER procedure r_upb (a, i); VALEUR i; REEL TABLEAU a; ENTIER i; c_procedure;
 
 ENTIER procedure raw_in (channel); VALEUR channel; ENTIER channel; c_procedure;
-procedure raw_out (channel, val); VALEUR channel, val; ENTIER channel, val; c_procedure;
+ENTIER procedure raw_out (channel, val); VALEUR channel, val; ENTIER channel, val; c_procedure;
 
 
