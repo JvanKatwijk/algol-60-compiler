@@ -1019,7 +1019,7 @@ int	__mod (int a, int b) {
 double	__npow (double x, int n) {
 double result;
 int i;
-   if ((n == 0) || (x == 0.0)) {
+   if ((n == 0) && (x == 0.0)) {
       fault ("expn undefined", n);
    }
 

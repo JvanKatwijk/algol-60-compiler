@@ -8021,6 +8021,7 @@ void	set_needs_ar (treenode *p) {
 
 int	will_be_compiled_as_c_proc (treenode *p) {
 
+	return FALSE;;
 	if (p == (treenode *)0)	//just outer level
 	   return FALSE;
 
