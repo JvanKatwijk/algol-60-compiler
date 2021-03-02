@@ -722,7 +722,7 @@ void newline (int ch) {
 
 void outstring (int ch, char *s) {
 int i;
-	for (i = 1; i <= length (s); i++)
+	for (i = 1; i < length (s); i++)
 	   outchar (ch, s, i);
 }
 
