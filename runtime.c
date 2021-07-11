@@ -672,6 +672,7 @@ int	close_file (int fd) {
 
 	if (2 < fd && fd < MAX_FILES)
 	   if (__fildescr[fd] != (FILE *) 0) {
+	      fflush (__fildescr [fd]);
 	      fclose (__fildescr[fd]);
 	      __fildescr[fd] = (FILE *) 0;
 	      return fd;
@@ -894,6 +895,7 @@ int n, j, k, m, p, fl, nines;
 	}
 
 	nines = false;
+
 	for (j = 1; j <= n; j++) {
 	   if (nines)
 	      k = 9;
@@ -988,7 +990,7 @@ FILE	*f;
 int	raw_out (int fd, int val) {
 FILE	*f;
 
-	if ((1 < fd) || (fd >= MAX_FILES))
+	if ((fd < 1) || (fd >= MAX_FILES))
 	   return -1;	// Can never be a file to write on
 
 	if (__fildescr[fd] == (FILE *) 0) 
