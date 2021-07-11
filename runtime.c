@@ -644,10 +644,13 @@ int	i;
 
 	switch (k) {
 	   case 0:
+	   case 'r':
 	      kk = "r"; break;
 	   case 1:
+	   case 'w':
 	      kk = "w"; break;
 	   case 2:
+	   case 'a':
 	      kk = "a"; break;
 	   default:
 	      kk = "r"; break;
