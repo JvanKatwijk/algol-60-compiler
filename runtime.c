@@ -102,6 +102,10 @@ void __deallocate (char *lf) {
 struct __alloc_slot *ll;
 struct __array_link *h, *n;
 
+	if (last_slot == NULL)
+	   return;
+	if (last_slot -> v == NULL)
+	   return;
 	h = last_slot -> v;
 	while (h != (struct __array_link *) 0) {
 	   n = h -> next;

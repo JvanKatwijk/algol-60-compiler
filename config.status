@@ -431,7 +431,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/usr/shared/sdr-j-development/systems/algol-60-compiler'
+ac_pwd='/usr/shared/systems/algol-60-compiler'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/usr/bin/mkdir -p'
@@ -634,12 +634,12 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/usr/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]=""
-S["install_sh"]="${SHELL} /usr/shared/sdr-j-development/systems/algol-60-compiler/install-sh"
-S["MAKEINFO"]="${SHELL} /usr/shared/sdr-j-development/systems/algol-60-compiler/missing makeinfo"
-S["AUTOHEADER"]="${SHELL} /usr/shared/sdr-j-development/systems/algol-60-compiler/missing autoheader"
-S["AUTOMAKE"]="${SHELL} /usr/shared/sdr-j-development/systems/algol-60-compiler/missing automake-1.16"
-S["AUTOCONF"]="${SHELL} /usr/shared/sdr-j-development/systems/algol-60-compiler/missing autoconf"
-S["ACLOCAL"]="${SHELL} /usr/shared/sdr-j-development/systems/algol-60-compiler/missing aclocal-1.16"
+S["install_sh"]="${SHELL} /usr/shared/systems/algol-60-compiler/install-sh"
+S["MAKEINFO"]="${SHELL} /usr/shared/systems/algol-60-compiler/missing makeinfo"
+S["AUTOHEADER"]="${SHELL} /usr/shared/systems/algol-60-compiler/missing autoheader"
+S["AUTOMAKE"]="${SHELL} /usr/shared/systems/algol-60-compiler/missing automake-1.16"
+S["AUTOCONF"]="${SHELL} /usr/shared/systems/algol-60-compiler/missing autoconf"
+S["ACLOCAL"]="${SHELL} /usr/shared/systems/algol-60-compiler/missing aclocal-1.16"
 S["VERSION"]="2.1.4"
 S["PACKAGE"]="jff-a2c"
 S["CYGPATH_W"]="echo"
@@ -667,6 +667,7 @@ S["infodir"]="${datarootdir}/info"
 S["docdir"]="${datarootdir}/doc/${PACKAGE}"
 S["oldincludedir"]="/usr/include"
 S["includedir"]="${prefix}/include"
+S["runstatedir"]="${localstatedir}/run"
 S["localstatedir"]="${prefix}/var"
 S["sharedstatedir"]="${prefix}/com"
 S["sysconfdir"]="${prefix}/etc"
@@ -1035,7 +1036,9 @@ $as_echo X/"$am_mf" |
     { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
 $as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
 as_fn_error $? "Something went wrong bootstrapping makefile fragments
-    for automatic dependency tracking.  Try re-running configure with the
+    for automatic dependency tracking.  If GNU make was not used, consider
+    re-running the configure script with MAKE=\"gmake\" (or whatever is
+    necessary).  You can also try re-running configure with the
     '--disable-dependency-tracking' option to at least be able to build
     the package (albeit without support for automatic dependency tracking).
 See \`config.log' for more details" "$LINENO" 5; }
