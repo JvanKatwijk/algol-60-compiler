@@ -1,4 +1,19 @@
 
+=========================================================================
+jff-algol. a simple Algol 60 to C translator
+--------------------------------------------------------------------------
+
+Note:
+The link https://gtoal.com/languages/algol60/new-unicode-parser/README.html
+refers to a site with a very useful, more genral parser that might be helpful
+to convert old(er) Algol 60 programs into a format that can be handled
+by the jff-algol compiler.
+As the text in the link reads:
+
+"The demonstration parser builds an executable, "algol60", which will re-indent an Algol60 source file (such as the examples in test/*.a60) while canonicalizing some of the alternative Algol symbols to something approaching the publication syntax standard, with stropped keywords having been converted to underlined format. You can compile the canonical Algol60 program by piping it through the unicode_to_jff utility in the tools/ subdirectory, and feeding that to the jff-a2c compiler from https://github.com/JvanKatwijk/algol-60-compiler. "
+(text from the site of Graham Toal)
+
+
 --------------------------------------------------------------
 jff-algol: A simple ALGOL 60 to C translator
 --------------------------------------------------------------
