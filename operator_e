@@ -1,5 +1,6 @@
 typedef integer:  A_int:   int;
 typedef boolean:  A_bool:  char;
+typedef Boolean:  A_bool:  char;
 typedef real:     A_real:  double;
 typedef void:     void:    void;
 end;
